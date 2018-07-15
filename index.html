@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<meta name="format-detection" content="telephone=no" />
+	<link rel="stylesheet" type="text/css"  href="css/reset.css">
+	<link rel="stylesheet" type="text/css"  href="css/style.css">
+    <script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/font.js"></script>
+</head>
+<body>
+	<div class="cont">
+   	  <div class="logo">
+        	<span></span>
+            <p></p>
+        </div>
+     
+      <a href="" class="down-btn">下载安装50336平台</a>
+    </div>
+    <div class="introduce-img">
+   	  <p>安装教程（ios用户必看）</p>
+    	<img src="images/b_02.png"> 
+        <img src="images/b_04.png">
+        <img src="images/b_06.png">
+        <img src="images/b_08.png">
+        <img src="images/b_10.png">
+        <img src="images/b_12.png">
+    </div>
+    <div id="screen"></div>
+    <div id="ios"><img src="images/b09.png"></div>
+    <div id="az"><img src="images/b09.png"></div>
+</body>
+    <script type="text/javascript">
+	function checkPlatform(){
+
+  if(/android/i.test(navigator.userAgent)){
+	 $('.down-btn').attr('href','http://vrccn.oss-cn-hongkong.aliyuncs.com/app/vrcapp_cn_1_1_5.apk');
+	 $('.introduce-img').css('display','none');
+	 console.log(2)
+  }
+
+  if(/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)){
+	$('.down-btn').attr('href','itms-services://?action=download-manifest&url=https://vrccn.oss-cn-hongkong.aliyuncs.com/app/VRC_TargetCD.plist');
+	console.log(1)
+  }
+}
+checkPlatform();
+  var browser = {
+        versions: function () {
+            var u = navigator.userAgent, app = navigator.appVersion;
+            return {//移动终端浏览器版本信息
+                trident: u.indexOf('Trident') > -1, //IE内核
+                presto: u.indexOf('Presto') > -1, //opera内核
+                webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+                gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+                mobile: !!u.match(/AppleWebKit.*Mobile.*/) || !!u.match(/AppleWebKit/), //是否为移动终端
+                ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+                android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+                iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者QQHD浏览器
+                iPad: u.indexOf('iPad') > -1, //是否iPad
+                weixin: u.match(/MicroMessenger/i), //微信浏览器
+                webApp: u.indexOf('Safari') == -1 //是否web应该程序，没有头部与底部
+            };
+        }(),
+        language: (navigator.browserLanguage || navigator.language).toLowerCase()
+    };
+    
+    if (browser.versions.weixin) {
+      if(browser.versions.ios||browser.versions.iphone||browser.versions.ipad){
+        $('#ios').show();
+		$('#screen').show();
+		
+      }
+      else{
+        $('#az').show();
+		$('#screen').show();
+      }
+    }
+    else{
+      if(browser.versions.android){
+        var urlParams=new UrlParameters();
+        if(typeof urlParams!="undefined" && ((urlParams.tableId && 0 != urlParams.tableId) || (urlParams.opType && 0 != urlParams.opType))){
+          openApp(urlParams.AppName,urlParams.tableId,urlParams.refresh);
+        }
+        $('#az').show();
+		$('#screen').show();
+		$('.introduce-img').css('display','none');
+      }
+      else if(browser.versions.ios||browser.versions.iphone||browser.versions.ipad){
+        var urlParams=new UrlParameters();
+        if(typeof urlParams!="undefined" && ((urlParams.tableId && 0 != urlParams.tableId) || (urlParams.opType && 0 != urlParams.opType))){
+		openApp(urlParams.AppName,urlParams.tableId,urlParams.refresh);  
+        }
+        $('#ios').show();
+		$('#screen').show();
+		
+      }
+      else{
+        $('#az').show();
+		$('#screen').show();
+		$('.introduce-img').css('display','none');
+      }
+    }
+
+
+
+</script>
+	
+</html>
