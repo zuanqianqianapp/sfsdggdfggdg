@@ -3,10 +3,10 @@
 body{ min-height:100vh; background:url(../images/bj.png) center top no-repeat; background-size:100% 100%;}
 
 /* --------------index-start-------------- */
-#screen { position:fixed; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.5); display:none;}
 #az { position:fixed; left:0; top:0; width:100%; height:100vh; display:none;}
 #az img { width:100%; margin:0 auto;}
-.logo span { display:block; background:url(../images/b11.png); width:3.2rem; height:3.2rem; background-size:100%; margin:0 auto;}
+.logo span { padding: .16rem; box-sizing: border-box; display:block; background:url(../images/a1.png); width:3.2rem; height:3.2rem; background-size:100%; margin:0 auto;}
+.logo span img{ width: 100%; height: 100%; border-radius:.45rem ;}
 .logo p{ display: block; background: url(../images/b10.png); width: 7.1rem; height: 4.9rem; margin:.4rem auto 0 auto; background-size:100% 100%;}
 .logo { padding-top:1rem;}
 .introduce { font-size:.18rem; color:#ffffff; text-align:center; line-height:2;}
